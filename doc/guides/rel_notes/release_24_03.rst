@@ -62,6 +62,11 @@ New Features
     to support TLS v1.2, TLS v1.3 and DTLS v1.2.
   * Added PMD API to allow raw submission of instructions to CPT.
 
+* **Added TLS record test suite.**
+
+  Added a new test suite in cryptodev autotest framework to test TLS record
+  security offload by supported cryptodevs.
+
 
 Removed Items
 -------------
