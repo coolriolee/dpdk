@@ -65,6 +65,10 @@ New Features
   * Added ``RTE_FLOW_ITEM_TYPE_RANDOM`` to match random value.
   * Added ``RTE_FLOW_FIELD_RANDOM`` to represent it in field ID struct.
 
+* **Updated NVIDIA mlx5 driver.**
+
+  * Added support for accumulating from src field to dst field.
+
 
 Removed Items
 -------------
