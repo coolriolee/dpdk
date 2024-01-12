@@ -401,6 +401,7 @@ enum index {
 	ITEM_VXLAN_GPE,
 	ITEM_VXLAN_GPE_VNI,
 	ITEM_VXLAN_GPE_PROTO,
+	ITEM_VXLAN_GPE_FLAGS,
 	ITEM_ARP_ETH_IPV4,
 	ITEM_ARP_ETH_IPV4_SHA,
 	ITEM_ARP_ETH_IPV4_SPA,
@@ -1793,6 +1794,7 @@ static const enum index item_geneve[] = {
 static const enum index item_vxlan_gpe[] = {
 	ITEM_VXLAN_GPE_VNI,
 	ITEM_VXLAN_GPE_PROTO,
+	ITEM_VXLAN_GPE_FLAGS,
 	ITEM_NEXT,
 	ZERO,
 };
@@ -4945,6 +4947,14 @@ static const struct token token_list[] = {
 			     item_param),
 		.args = ARGS(ARGS_ENTRY_HTON(struct rte_flow_item_vxlan_gpe,
 					     protocol)),
+	},
+	[ITEM_VXLAN_GPE_FLAGS] = {
+		.name = "flags",
+		.help = "VXLAN-GPE flags",
+		.next = NEXT(item_vxlan_gpe, NEXT_ENTRY(COMMON_UNSIGNED),
+			     item_param),
+		.args = ARGS(ARGS_ENTRY_HTON(struct rte_flow_item_vxlan_gpe,
+					     flags)),
 	},
 	[ITEM_ARP_ETH_IPV4] = {
 		.name = "arp_eth_ipv4",
