@@ -36,6 +36,7 @@ cnxk_bphy_cgx_link_cond(uint16_t dev_id, unsigned int queue, int cond)
 int
 cnxk_bphy_cgx_dev_selftest(uint16_t dev_id)
 {
+	struct cnxk_bphy_cgx_msg_set_link_state link_state = { };
 	unsigned int queues, i;
 	int ret;
 
@@ -75,7 +76,8 @@ cnxk_bphy_cgx_dev_selftest(uint16_t dev_id)
 			break;
 		}
 
-		ret = rte_pmd_bphy_cgx_set_link_state(dev_id, i, false);
+		link_state.state = false;
+		ret = rte_pmd_bphy_cgx_set_link_state(dev_id, i, &link_state);
 		if (ret) {
 			BPHY_CGX_LOG(ERR, "Failed to set link down");
 			break;
@@ -85,7 +87,10 @@ cnxk_bphy_cgx_dev_selftest(uint16_t dev_id)
 		if (ret != 0)
 			BPHY_CGX_LOG(ERR, "Timed out waiting for a link down");
 
-		ret = rte_pmd_bphy_cgx_set_link_state(dev_id, i, true);
+		link_state.state = true;
+		link_state.timeout = 1500;
+		link_state.rx_tx_dis = true;
+		ret = rte_pmd_bphy_cgx_set_link_state(dev_id, i, &link_state);
 		if (ret) {
 			BPHY_CGX_LOG(ERR, "Failed to set link up");
 			break;
