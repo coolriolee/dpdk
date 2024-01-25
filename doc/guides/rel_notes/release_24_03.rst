@@ -75,6 +75,7 @@ New Features
   * Added support for VXLAN-GPE matching in HW Steering flow engine
     (``dv_flow_en`` = 2).
 
+  * Added support for ``RTE_FLOW_ITEM_TYPE_RANDOM`` flow item.
 
 Removed Items
 -------------
