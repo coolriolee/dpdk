@@ -70,6 +70,11 @@ New Features
   * Added a fath path function ``rte_eth_tx_queue_count`` to get the number of used
     descriptors of a Tx queue.
 
+* **Updated Atomic Rules' Arkville PMD.**
+
+  * Added support for Atomic Rules' TK242 packet-capture family of devices
+    with PCI IDs: ``0x1024, 0x1025, 0x1026``.
+
 
 Removed Items
 -------------
